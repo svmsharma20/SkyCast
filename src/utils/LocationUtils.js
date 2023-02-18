@@ -26,13 +26,17 @@ export const getLatLong = (locArr, sucessCallBack) => {
   request(url)
     .then((res) => {
       const result = res.data.results;
-      const filteredRes =
-        locArr.length === 1
-          ? result
-          : result.filter((res) => res.country === locArr[1]);
+      if (result) {
+        const filteredRes =
+          locArr.length === 1
+            ? result
+            : result.filter((res) => res.country === locArr[1]);
 
-      if (filteredRes.length !== 0) {
-        sucessCallBack(filteredRes[0].latitude, filteredRes[0].longitude);
+        if (filteredRes.length !== 0) {
+          sucessCallBack(filteredRes[0].latitude, filteredRes[0].longitude);
+        }
+      } else {
+        sucessCallBack('', '');
       }
     })
     .catch((error) => console.error(error));
