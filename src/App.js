@@ -1,13 +1,10 @@
-import React from 'react';
 import './App.css';
-import EnterLocation from './components/EnterLocation/EnterLocation';
+import Location from './components/loc/location/Location';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <EnterLocation />
-      </header>
+      <Location />
     </div>
   );
 }

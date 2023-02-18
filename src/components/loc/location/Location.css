@@ -1,0 +1,8 @@
+.location-container {
+  width: 700px;
+  margin: 0px auto;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

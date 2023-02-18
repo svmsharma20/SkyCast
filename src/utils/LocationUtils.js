@@ -1,12 +1,13 @@
 import { getError, formatMsg } from './CommonUtils';
+import { request } from './RequestUtils';
 
 const LOCATION_URL =
   'https://geocoding-api.open-meteo.com/v1/search?name={0}&count={1}';
 
 const count = 10;
 
-export const getLatLong = (locationName) => {
-  let locArr = locationName.split(',');
+export const getLocArr = (location) => {
+  let locArr = location.split(',');
   locArr = locArr
     .map((item) => {
       item = item.trim();
@@ -16,7 +17,13 @@ export const getLatLong = (locationName) => {
   if (locArr.length === 0) {
     throw getError('Invalid city/country name');
   }
-  console.log(formatMsg(LOCATION_URL, locArr[0], count));
+  return locArr;
+};
+
+export const getLatLong = (locArr) => {
+  const url = formatMsg(LOCATION_URL, locArr[0], count);
+  console.log(url);
+  request(url);
 };
 
 export default getLatLong;

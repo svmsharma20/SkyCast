@@ -1,0 +1,13 @@
+:root {
+  --label-color: #fff9db;
+}
+
+.latlong-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.latlong-item {
+  color: var(--label-color);
+}

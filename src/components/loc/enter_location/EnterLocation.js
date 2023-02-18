@@ -1,16 +1,18 @@
 import React from 'react';
 import { useRef } from 'react';
-import { getLatLong } from '../../utils/LocationUtils';
+import { getLatLong, getLocArr } from '../../../utils/LocationUtils';
 import './EnterLocation.css';
 
 const url = `https://geocoding-api.open-meteo.com/v1/search?name={0}&count=1`;
 
-function EnterLocation() {
+function EnterLocation(props) {
   const enteredLocation = useRef('');
+
   const searchHandler = () => {
     const locationName = enteredLocation.current.value.trim();
     // console.log(url.replace('{0}', locationName));
-    getLatLong(locationName);
+    // getLatLong(locationName);
+    props.onSearch(getLocArr(locationName));
   };
 
   return (
