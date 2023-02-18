@@ -5,22 +5,25 @@ import './Location.css';
 import getLatLong from '../../../utils/LocationUtils';
 
 export const Location = () => {
-  const [latitude, setLatitude] = useState('');
-  const [longitude, setLongitude] = useState('');
+  const [locationInfo, setLocationInfo] = useState({});
 
-  const setLatLong = (lat, long) => {
-    setLatitude(lat);
-    setLongitude(long);
+  const setLocInfo = (lat, long, tz) => {
+    const loc = {
+      latitude: lat,
+      longitude: long,
+      timezone: tz,
+    };
+    setLocationInfo(loc);
   };
 
   const searchHandler = (locArr) => {
-    getLatLong(locArr, setLatLong);
+    getLatLong(locArr, setLocInfo);
   };
 
   return (
     <div className="location-container">
       <EnterLocation onSearch={searchHandler} />
-      <LatLong latitude={latitude} longitude={longitude} />
+      <LatLong locationInfo={locationInfo} />
     </div>
   );
 };
