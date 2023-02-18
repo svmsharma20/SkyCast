@@ -4,26 +4,26 @@ import { useState } from 'react';
 import './Location.css';
 import getLatLong from '../../../utils/LocationUtils';
 
-export const Location = () => {
-  const [locationInfo, setLocationInfo] = useState({});
+export const Location = (props) => {
+  // const [locationInfo, setLocationInfo] = useState({});
 
-  const setLocInfo = (lat, long, tz) => {
-    const loc = {
-      latitude: lat,
-      longitude: long,
-      timezone: tz,
-    };
-    setLocationInfo(loc);
-  };
+  // const setLocInfo = (lat, long, tz) => {
+  //   const loc = {
+  //     latitude: lat,
+  //     longitude: long,
+  //     timezone: tz,
+  //   };
+  //   setLocationInfo(loc);
+  // };
 
   const searchHandler = (locArr) => {
-    getLatLong(locArr, setLocInfo);
+    getLatLong(locArr, props.onSearch);
   };
 
   return (
     <div className="location-container">
       <EnterLocation onSearch={searchHandler} />
-      <LatLong locationInfo={locationInfo} />
+      <LatLong locationInfo={props.locationInfo} />
     </div>
   );
 };

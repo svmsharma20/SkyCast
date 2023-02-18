@@ -33,7 +33,7 @@ export const getLatLong = (locArr, sucessCallBack) => {
             : result.filter((res) => res.country === locArr[1]);
 
         if (filteredRes.length !== 0) {
-          console.log(filteredRes[0]);
+          // console.log(filteredRes[0]);
           sucessCallBack(
             filteredRes[0].latitude,
             filteredRes[0].longitude,

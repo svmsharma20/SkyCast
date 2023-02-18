@@ -1,8 +1,9 @@
 h3 {
-  color: #3bc9db;
+  /* color: #3bc9db; */
+  color: #ffa94d;
   font-family: 'Space Mono';
   font-size: 40px;
-  font-weight: 300;
+  font-weight: 100;
   margin: 0;
   margin-top: 40px;
 }
