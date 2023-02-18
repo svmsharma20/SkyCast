@@ -20,10 +20,22 @@ export const getLocArr = (location) => {
   return locArr;
 };
 
-export const getLatLong = (locArr) => {
+export const getLatLong = (locArr, sucessCallBack) => {
   const url = formatMsg(LOCATION_URL, locArr[0], count);
-  // console.log(url);
-  request(url);
+
+  request(url)
+    .then((res) => {
+      const result = res.data.results;
+      const filteredRes =
+        locArr.length === 1
+          ? result
+          : result.filter((res) => res.country === locArr[1]);
+
+      if (filteredRes.length !== 0) {
+        sucessCallBack(filteredRes[0].latitude, filteredRes[0].longitude);
+      }
+    })
+    .catch((error) => console.error(error));
 };
 
 export default getLatLong;

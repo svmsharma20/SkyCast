@@ -10,8 +10,6 @@ function EnterLocation(props) {
 
   const searchHandler = () => {
     const locationName = enteredLocation.current.value.trim();
-    // console.log(url.replace('{0}', locationName));
-    // getLatLong(locationName);
     props.onSearch(getLocArr(locationName));
   };
 

@@ -8,8 +8,13 @@ export const Location = () => {
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitude] = useState('');
 
+  const setLatLong = (lat, long) => {
+    setLatitude(lat);
+    setLongitude(long);
+  };
+
   const searchHandler = (locArr) => {
-    const positionInfo = getLatLong(locArr);
+    getLatLong(locArr, setLatLong);
   };
 
   return (
