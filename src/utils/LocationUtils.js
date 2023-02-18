@@ -22,7 +22,7 @@ export const getLocArr = (location) => {
 
 export const getLatLong = (locArr) => {
   const url = formatMsg(LOCATION_URL, locArr[0], count);
-  console.log(url);
+  // console.log(url);
   request(url);
 };
 
