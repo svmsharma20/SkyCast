@@ -5,17 +5,6 @@ import './Location.css';
 import getLatLong from '../../../utils/LocationUtils';
 
 export const Location = (props) => {
-  // const [locationInfo, setLocationInfo] = useState({});
-
-  // const setLocInfo = (lat, long, tz) => {
-  //   const loc = {
-  //     latitude: lat,
-  //     longitude: long,
-  //     timezone: tz,
-  //   };
-  //   setLocationInfo(loc);
-  // };
-
   const searchHandler = (locArr) => {
     getLatLong(locArr, props.onSearch);
   };

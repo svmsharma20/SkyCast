@@ -22,9 +22,7 @@ export const fetchForcast = (locationInfo, sucessCallBack) => {
 
   request(url)
     .then((res) => {
-      // console.log(res);
       const result = res.data;
-      // console.log(result[CURR_WEATHER][TEMPERATURE]);
       if (result) {
         const forcast = {
           TEMPERATURE: result[CURR_WEATHER][TEMPERATURE],

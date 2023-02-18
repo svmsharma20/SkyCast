@@ -1,14 +1,13 @@
 import { SunDim, SunHorizon, Thermometer, Wind } from 'phosphor-react';
 import { useState, useEffect } from 'react';
-import {
-  fetchForcast,
-  SUNRISE,
-  SUNSET,
-  TEMPERATURE,
-  WINDSPEED,
-} from '../../../utils/ForcastUtils';
+import { fetchForcast } from '../../../utils/ForcastUtils';
 import ForcastItem from '../forcast_item/ForcastItem';
 import './ForcastGrid.css';
+
+const extractTimeInfo = (datetime) => {
+  let dt = new Date(datetime);
+  return dt.getHours() + ':' + dt.getMinutes();
+};
 
 export const ForcastGrid = (props) => {
   const [datapoints, setDataPoints] = useState([]);
@@ -18,25 +17,25 @@ export const ForcastGrid = (props) => {
       {
         id: 1,
         icon: Thermometer,
-        value: datapoints[TEMPERATURE],
+        value: datapoints['TEMPERATURE'],
         parameter: 'Temperature',
       },
       {
         id: 2,
         icon: Wind,
-        value: datapoints[WINDSPEED],
+        value: datapoints['WINDSPEED'],
         parameter: 'Wind',
       },
       {
         id: 3,
         icon: SunDim,
-        value: datapoints[SUNRISE],
+        value: extractTimeInfo(datapoints['SUNRISE']),
         parameter: 'Sunrise',
       },
       {
         id: 4,
         icon: SunHorizon,
-        value: datapoints[SUNSET],
+        value: extractTimeInfo(datapoints['SUNSET']),
         parameter: 'Sunset',
       },
     ];
@@ -46,7 +45,7 @@ export const ForcastGrid = (props) => {
 
   useEffect(() => {
     fetchForcast(props.locationInfo, updateDataPoints);
-  }, [props.locationInfo, setDataPoints, datapoints]);
+  }, [props.locationInfo, setDataPoints]);
 
   return (
     <div className="forcast-container">
